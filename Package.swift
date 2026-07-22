@@ -10,7 +10,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/sendbird/delight-ai-agent-core-ios",
-            from: "1.17.0"
+            from: "1.17.1"
         )
     ],
     targets: [
