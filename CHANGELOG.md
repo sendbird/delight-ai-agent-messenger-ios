@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.17.3 (Jul 31, 2026) with Chat SDK v4.39.9
+
+### Fixes
+
+- Fixed the message input staying disabled longer than intended after sending a message (#615)
+- Improved AI Agent stats stability by bounding deduplication key retention (#618)
+
 ## v1.17.2 (Jul 23, 2026) with Chat SDK v4.39.8
 
 ### Fixes
