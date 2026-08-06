@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.18.0 (Aug 06, 2026) with Chat SDK v4.39.9
+
+### Features
+
+- Added support for multiple Customer Provided Authentications (CPAs) per bot (#565, AA-14290)
+  - Submit authorization codes before a conversation with `AuthenticateParams.cpaAuthorizationCodes`, or during one with `AIAgentMessenger.submitCPAAuthorizationCodes(aiAgentId:codes:completionHandler:)`
+  - `ExternalAuthTokenExpiredData.cpaKey` identifies which CPA's token expired
+  - New interfaces: `CPAAuthorizationCode`, `CPAAuthorizationResult`, `CPAAuthorizationStatus`, `CPAAuthorizationErrorCode`, `SubmitCPAAuthorizationCodesResponse`
+- Added `fail` to `SBAChallengeAction`, alongside `submit` and `cancel` (#599, AA-16154)
+
+### Improvements
+
+- Improved input availability when a message fails to send (#633)
+- Improved typing indicator accuracy by ending the typing state as soon as the message input is cleared (#639)
+- Improved VoiceOver announcements, which previously stayed silenced after the message input was cleared (#639)
+
+### Fixes
+
+- Fixed file names being shown as message text when sending an image-only multiple files message (#630, AA-16631)
+
 ## v1.17.3 (Jul 31, 2026) with Chat SDK v4.39.9
 
 ### Fixes
