@@ -8,8 +8,9 @@ import PackageDescription
 // swiftinterface 는 -target arm64-apple-ios14.0 으로 고정돼 있다.
 //
 // xcframework 는 ai-agent-ios 의 scripts/build_messenger_framework.sh 가
-// Xcode 26 으로 만든다. 빌드 입력은 ai-agent-ios 의 소스이고, 이 레포의
-// Sources/ 는 어떤 타깃에도 물리지 않는다.
+// Xcode 26 으로 만든다. 빌드 입력은 이 레포의 Sources/ 다. 고객이 1.21.0 까지
+// 직접 컴파일하던 소스를 그대로 빌드하므로 public API 는 바뀌지 않는다.
+// Sources/ 는 SwiftPM 타깃에 물리지 않지만 삭제하면 xcframework 를 만들 수 없다.
 
 let package = Package(
     name: "SendbirdAIAgentMessenger",
