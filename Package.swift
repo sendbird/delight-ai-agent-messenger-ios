@@ -21,14 +21,14 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/sendbird/delight-ai-agent-core-ios",
-            from: "1.21.0"
+            branch: "test/aa-18079-spm-remote"
         )
     ],
     targets: [
         .binaryTarget(
             name: "SendbirdAIAgentMessenger",
-            url: "https://github.com/sendbird/delight-ai-agent-messenger-ios/releases/download/1.21.0/SendbirdAIAgentMessenger.xcframework.zip",
-            checksum: "0000000000000000000000000000000000000000000000000000000000000000"
+            url: "https://github.com/sendbird/sendbird-ios-distribution/releases/download/spm-test-aa-18079-35554001178/SendbirdAIAgentMessenger.xcframework.zip",
+            checksum: "669224ba90e5389f1ed2085d3dc8147ada84fd9c31a7849a15dbbdc3e661cc6d"
         ),
         // binaryTarget 은 의존을 선언할 수 없다. 이 빈 타깃이 Core 를 묶는다.
         .target(
