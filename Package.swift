@@ -1,18 +1,20 @@
 // swift-tools-version:5.10
 import PackageDescription
 
-// SendbirdAIAgentMessenger 는 소스로 배포한다.
+// SendbirdAIAgentMessenger ships as a source target.
 //
-// 1.22.0 에서는 static xcframework 로 배포했다. 그 static 아카이브가 의존 패키지의
-// 글루 타깃 SendbirdChatSDKWrapper.o 까지 함께 흡수했고, 앱이 같은 타깃을 SPM 으로
-// 빌드하면 심볼이 겹친다. -ObjC / -all_load / -force_load 는 아카이브 멤버를 강제로
-// 끌어오므로 그 겹침이 링크 에러가 된다 (ld: 6 duplicate symbols).
+// 1.22.0 shipped it as a static xcframework. That static archive also absorbed
+// SendbirdChatSDKWrapper.o, the glue target of a dependency package, so the symbols
+// collide once the app builds that same target through SPM. -ObjC / -all_load /
+// -force_load force archive members to be loaded, which turns the overlap into a
+// link error (ld: 6 duplicate symbols).
 //
-// 소스 타깃은 아카이브를 만들지 않아 이 문제가 성립하지 않는다.
-// Xcode 27 대응은 Core / Splash / SendbirdMarkdownUI / SendbirdNetworkImage 의
-// 바이너리화로 이미 해결되어 있고, Messenger 는 바이너리일 필요가 없다.
-// Xcode 27 은 앱 배포 타깃을 iOS 15 미만으로 만들지 못하므로, 소스 타깃이
-// 앱 배포 타깃으로 컴파일되어도 Core 의 ios14.0 swiftinterface 와 어긋나지 않는다.
+// A source target builds no archive, so the problem does not arise.
+// Xcode 27 support is already covered by making Core / Splash / SendbirdMarkdownUI /
+// SendbirdNetworkImage binary, and Messenger does not need to be binary.
+// Xcode 27 cannot set an app deployment target below iOS 15, so compiling the source
+// target against the app deployment target stays consistent with Core's ios14.0
+// swiftinterface.
 
 let package = Package(
     name: "SendbirdAIAgentMessenger",
